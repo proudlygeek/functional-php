@@ -22,6 +22,17 @@ class Core {
 		return $result;
 	}
 
+	public static function find(array $iterable, $block)
+	{
+		foreach ($iterable as $el) {
+			if ($block($el)) {
+				return $el;
+			}
+		}
+
+		return null;
+	}
+
 	public static function filter(array $iterable, $block) {
 		
 		$result = array();
