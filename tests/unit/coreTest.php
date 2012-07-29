@@ -6,6 +6,7 @@ use Proudlygeek\FunctionalPHP\Core;
 
 
 class CoreTest extends \PHPUnit_Framework_TestCase {
+	
 	public function setUp() 
 	{
 
@@ -29,5 +30,14 @@ class CoreTest extends \PHPUnit_Framework_TestCase {
 		});
 
 		$this->assertEquals(array("<p>1</p>", "<p>2</p>", "<p>3</p>"), $result);
+	}
+
+	public function test_filter()
+	{
+		$result = Core::filter(array("Apple", "Banana", "Strawberry"), function($el) { 
+			return strlen($el) > 5;
+		});
+
+		$this->assertEquals(array("Banana", "Strawberry"), $result);
 	}
 }
