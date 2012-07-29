@@ -12,6 +12,13 @@ class Core {
 	}
 
 	public static function map(array $iterable, $block) {
-		// TODO ...
+		
+		$result = array();
+
+		foreach($iterable as $el) {
+			$result[]= $block($el);
+		}
+
+		return $result;
 	}
 }
