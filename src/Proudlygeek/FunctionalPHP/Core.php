@@ -5,13 +5,15 @@ namespace Proudlygeek\FunctionalPHP;
 
 class Core {
 	
-	public static function each(array $iterable, $block) {
+	public static function each(array $iterable, $block) 
+	{
 		foreach($iterable as $el) {
 			$block($el);
 		}
 	}
 
-	public static function map(array $iterable, $block) {
+	public static function map(array $iterable, $block) 
+	{
 		
 		$result = array();
 
@@ -33,7 +35,8 @@ class Core {
 		return null;
 	}
 
-	public static function select(array $iterable, $block) {
+	public static function select(array $iterable, $block) 
+	{
 		
 		$result = array();
 
@@ -46,7 +49,8 @@ class Core {
 		return $result;
 	}
 
-	public static function reject(array $iterable, $block) {
+	public static function reject(array $iterable, $block) 
+	{
 		$result = array();
 
 		foreach($iterable as $el) {
@@ -58,7 +62,8 @@ class Core {
 		return $result;
 	}
 
-	public static function reduce(array $iterable, $block) {
+	public static function reduce(array $iterable, $block) 
+	{
 		
 		$partialResult = $iterable[0];
 
@@ -67,6 +72,17 @@ class Core {
 		}
 
 		return $partialResult;
+	}
+
+	public static function any(array $iterable, $block) 
+	{
+		foreach($iterable as $el) {
+			if ($block($el)) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 	
 }

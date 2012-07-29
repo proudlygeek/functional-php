@@ -67,4 +67,13 @@ class CoreTest extends \PHPUnit_Framework_TestCase {
 
 		$this->assertEquals(21, $result);
 	}
+
+	public function test_any()
+	{
+		$result = Core::any(array(1, 2, 3, 4), function($el) {
+			return $el % 2 == 0;
+		});
+
+		$this->assertTrue($result);
+	}
 }
