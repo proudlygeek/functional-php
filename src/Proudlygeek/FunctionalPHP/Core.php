@@ -106,5 +106,18 @@ class Core {
 
 		return $result;
 	}
+
+	public static function max(array $iterable, $block)
+	{
+		$max = 0;
+
+		foreach($iterable as $el) {
+			if($current = $block($el) > $max) {
+				$max = $current;
+			}
+		}
+
+		return $max;
+	}
 	
 }
