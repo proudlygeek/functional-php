@@ -84,5 +84,16 @@ class Core {
 
 		return false;
 	}
+
+	public static function all(array $iterable, $block) 
+	{
+		foreach($iterable as $el) {
+			if (!$block($el)) {
+				return false;
+			}
+		}
+
+		return true;
+	}
 	
 }
