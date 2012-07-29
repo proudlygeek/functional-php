@@ -1,0 +1,16 @@
+{
+    "name": "proudlygeek/functional-php",
+    "description": "A simple showcase of functional-style programming stuff",
+    "require": {
+        "php": "5.3.6"
+    },
+    "authors": [
+        {
+            "name": "Gianluca Bargelli",
+            "email": "g.bargelli@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-0": {"Proudlygeek\\FunctionalPHP": "src"}
+    }
+}
