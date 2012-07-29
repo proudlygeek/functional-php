@@ -95,5 +95,16 @@ class Core {
 
 		return true;
 	}
+
+	public static function pluck(array $iterable, $field)
+	{
+		$result = array();
+
+		foreach($iterable as $el) {
+			$result[]= $el[$field];
+		}
+
+		return $result;
+	}
 	
 }

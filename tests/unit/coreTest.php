@@ -85,4 +85,24 @@ class CoreTest extends \PHPUnit_Framework_TestCase {
 
 		$this->assertTrue($result);
 	}
+
+	public function test_pluck()
+	{
+		$result = Core::pluck(array(
+			array(
+				'name' => "John",
+				'last' => "Doe"
+			),
+			array(
+				'name' => "Jane",
+				'last' => "Doe"
+			),
+			array(
+				'name' => "Mario",
+				'last' => "Rossi"
+			),
+		), 'name');
+
+		$this->assertEquals(array("John", "Jane", "Mario"), $result);
+	}
 }
