@@ -10,4 +10,8 @@ class Core {
 			$block($el);
 		}
 	}
+
+	public static function map(array $iterable, $block) {
+		// TODO ...
+	}
 }
