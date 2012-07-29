@@ -118,4 +118,17 @@ class CoreTest extends \PHPUnit_Framework_TestCase {
 
 		$this->assertEquals(56, $result);
 	}
+
+	public function test_min()
+	{
+		$result = Core::max(array(
+			array('name' => "John", 'age' => 37),
+			array('name' => "Jane", 'age' => 24),
+			array('name' => "Mario", 'age' => 56)
+		), function($person) {
+			return $person['age'];
+		});
+
+		$this->assertEquals(24, $result);
+	}
 }

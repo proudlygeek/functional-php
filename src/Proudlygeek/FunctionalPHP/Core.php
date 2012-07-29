@@ -109,7 +109,9 @@ class Core {
 
 	public static function max(array $iterable, $block)
 	{
-		$max = 0;
+		$max = $block($iterable[0]);
+
+		next($iterable);
 
 		foreach($iterable as $el) {
 			if($current = $block($el) > $max) {
@@ -118,6 +120,21 @@ class Core {
 		}
 
 		return $max;
+	}
+
+	public static function min(array $iterable, $block)
+	{
+		$min = $block($iterable[0]);
+
+		next($iterable);
+
+		foreach($iterable as $el) {
+			if($current = $block($el) < $max) {
+				$min = $current;
+			}
+		}
+
+		return $min;
 	}
 	
 }
