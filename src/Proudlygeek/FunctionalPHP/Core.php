@@ -46,6 +46,18 @@ class Core {
 		return $result;
 	}
 
+	public static function reject(array $iterable, $block) {
+		$result = array();
+
+		foreach($iterable as $el) {
+			if (!$block($el)) {
+				$result[] = $el;
+			}
+		}
+
+		return $result;
+	}
+
 	public static function reduce(array $iterable, $block) {
 		
 		$partialResult = $iterable[0];

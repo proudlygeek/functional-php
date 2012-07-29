@@ -41,6 +41,15 @@ class CoreTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals(array("Banana", "Strawberry"), $result);
 	}
 
+	public function test_reject()
+	{
+		$result = Core::reject(array("Apple", "Banana", "Strawberry"), function($el) { 
+			return strlen($el) > 5;
+		});
+
+		$this->assertEquals(array("Apple"), $result);
+	}
+
 	public function test_find()
 	{
 		$result = Core::find(array(11, 45, 12, 9, 2), function($el) {
