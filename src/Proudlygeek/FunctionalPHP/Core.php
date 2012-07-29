@@ -23,7 +23,16 @@ class Core {
 	}
 
 	public static function filter(array $iterable, $block) {
-		return array();
+		
+		$result = array();
+
+		foreach($iterable as $el) {
+			if ($block($el)) {
+				$result[] = $el;
+			}
+		}
+
+		return $result;
 	}
 	
 }
