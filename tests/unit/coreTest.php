@@ -32,9 +32,9 @@ class CoreTest extends \PHPUnit_Framework_TestCase {
 		$this->assertEquals(array("<p>1</p>", "<p>2</p>", "<p>3</p>"), $result);
 	}
 
-	public function test_filter()
+	public function test_select()
 	{
-		$result = Core::filter(array("Apple", "Banana", "Strawberry"), function($el) { 
+		$result = Core::select(array("Apple", "Banana", "Strawberry"), function($el) { 
 			return strlen($el) > 5;
 		});
 

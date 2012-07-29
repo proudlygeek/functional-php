@@ -33,7 +33,7 @@ class Core {
 		return null;
 	}
 
-	public static function filter(array $iterable, $block) {
+	public static function select(array $iterable, $block) {
 		
 		$result = array();
 
