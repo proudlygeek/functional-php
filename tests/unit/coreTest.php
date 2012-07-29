@@ -40,4 +40,13 @@ class CoreTest extends \PHPUnit_Framework_TestCase {
 
 		$this->assertEquals(array("Banana", "Strawberry"), $result);
 	}
+
+	public function test_reduce()
+	{
+		$result = Core::reduce(array(1, 2, 3, 4, 5, 6), function($x, $y) {
+			return $x + $y;
+		});
+
+		$this->assertEquals(21, $result);
+	}
 }
