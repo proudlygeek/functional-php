@@ -10,11 +10,11 @@ class CoreTest extends \PHPUnit_Framework_TestCase {
 
 	}
 
-	public function test_helloWorld()
+	public function test_each()
 	{
 		$result = array();
 
-		Core::each(array(1, 2, 3), function($element) use $result {
+		Core::each(array(1, 2, 3), function($element) use (&$result) {
 			$result[]= $element + 1;
 		});
 
