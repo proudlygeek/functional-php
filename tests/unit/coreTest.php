@@ -140,4 +140,15 @@ class CoreTest extends \PHPUnit_Framework_TestCase {
 
 		$this->assertEquals(array(6, 7, 8, 9, 10), $result);
 	}
+
+    public function test_mediumChain()
+    {
+        $result = Core::chain(array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10))
+            ->select(function($n) { return $n > 5; })
+            ->reject(function($n) { return $n % 2 == 0; })
+            ->all(function($n) { return $n % 2 != 0; })
+            ->value();
+
+        $this->assertTrue($result);
+    }
 }

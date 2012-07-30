@@ -41,7 +41,7 @@ class Chain {
         array_unshift($args, $this->obj);
         $result = call_user_func_array($this->library . "::" . $method, $args);
 
-        if ($result) {
+        if (!is_null($result)) {
             $this->setObj($result);
         }
 
