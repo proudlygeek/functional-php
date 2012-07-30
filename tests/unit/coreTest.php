@@ -56,7 +56,7 @@ class CoreTest extends \PHPUnit_Framework_TestCase
     }
 
     public function test_reduce()
-{
+    {
         $result = Core::reduce(array(1, 2, 3, 4, 5, 6), function($x, $y) {
             return $x + $y;
         });
