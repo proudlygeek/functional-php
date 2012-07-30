@@ -4,16 +4,30 @@ namespace Proudlygeek\FunctionalPHP;
 
 use Proudlygeek\FunctionalPHP\Chain;
 
+/**
+ *
+ */
 class Core {
-	
-	public static function each(array $iterable, $block) 
+
+    /**
+     * @static
+     * @param array $iterable
+     * @param $block
+     */
+    public static function each(array $iterable, $block)
 	{
 		foreach($iterable as $el) {
 			$block($el);
 		}
 	}
 
-	public static function map(array $iterable, $block) 
+    /**
+     * @static
+     * @param array $iterable
+     * @param $block
+     * @return array
+     */
+    public static function map(array $iterable, $block)
 	{
 		
 		$result = array();
@@ -25,7 +39,13 @@ class Core {
 		return $result;
 	}
 
-	public static function find(array $iterable, $block)
+    /**
+     * @static
+     * @param array $iterable
+     * @param $block
+     * @return null
+     */
+    public static function find(array $iterable, $block)
 	{
 		foreach ($iterable as $el) {
 			if ($block($el)) {
@@ -36,7 +56,13 @@ class Core {
 		return null;
 	}
 
-	public static function select(array $iterable, $block) 
+    /**
+     * @static
+     * @param array $iterable
+     * @param $block
+     * @return array
+     */
+    public static function select(array $iterable, $block)
 	{
 		
 		$result = array();
@@ -50,7 +76,13 @@ class Core {
 		return $result;
 	}
 
-	public static function reject(array $iterable, $block) 
+    /**
+     * @static
+     * @param array $iterable
+     * @param $block
+     * @return array
+     */
+    public static function reject(array $iterable, $block)
 	{
 		$result = array();
 
@@ -63,7 +95,13 @@ class Core {
 		return $result;
 	}
 
-	public static function reduce(array $iterable, $block) 
+    /**
+     * @static
+     * @param array $iterable
+     * @param $block
+     * @return mixed
+     */
+    public static function reduce(array $iterable, $block)
 	{
 		
 		$partialResult = $iterable[0];
@@ -75,7 +113,13 @@ class Core {
 		return $partialResult;
 	}
 
-	public static function any(array $iterable, $block) 
+    /**
+     * @static
+     * @param array $iterable
+     * @param $block
+     * @return bool
+     */
+    public static function any(array $iterable, $block)
 	{
 		foreach($iterable as $el) {
 			if ($block($el)) {
@@ -86,7 +130,13 @@ class Core {
 		return false;
 	}
 
-	public static function all(array $iterable, $block) 
+    /**
+     * @static
+     * @param array $iterable
+     * @param $block
+     * @return bool
+     */
+    public static function all(array $iterable, $block)
 	{
 		foreach($iterable as $el) {
 			if (!$block($el)) {
@@ -97,7 +147,13 @@ class Core {
 		return true;
 	}
 
-	public static function pluck(array $iterable, $field)
+    /**
+     * @static
+     * @param array $iterable
+     * @param $field
+     * @return array
+     */
+    public static function pluck(array $iterable, $field)
 	{
 		$result = array();
 
@@ -108,7 +164,13 @@ class Core {
 		return $result;
 	}
 
-	public static function max(array $iterable, $block)
+    /**
+     * @static
+     * @param array $iterable
+     * @param $block
+     * @return bool
+     */
+    public static function max(array $iterable, $block)
 	{
 		$max = $block($iterable[0]);
 
@@ -121,16 +183,22 @@ class Core {
 		}
 
 		return $max;
-	} 
+	}
 
-	public static function min(array $iterable, $block)
+    /**
+     * @static
+     * @param array $iterable
+     * @param $block
+     * @return bool
+     */
+    public static function min(array $iterable, $block)
 	{
 		$min = $block($iterable[0]);
 
 		next($iterable);
 
 		foreach($iterable as $el) {
-			if($current = $block($el) < $max) {
+			if($current = $block($el) < $min) {
 				$min = $current;
 			}
 		}
@@ -138,7 +206,12 @@ class Core {
 		return $min;
 	}
 
-	public static function chain(array $obj)
+    /**
+     * @static
+     * @param array $obj
+     * @return Chain
+     */
+    public static function chain(array $obj)
 	{
 		$chain = new Chain($obj);
         $chain->setLibrary('Proudlygeek\FunctionalPHP\Core');
