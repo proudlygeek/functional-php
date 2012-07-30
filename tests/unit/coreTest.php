@@ -151,4 +151,44 @@ class CoreTest extends \PHPUnit_Framework_TestCase {
 
         $this->assertTrue($result);
     }
+
+    public function test_objectListChain()
+    {
+        $devs = array(
+            array(
+                'name' => "Gianpiero",
+                'last' => "Fiorelli",
+                'skills' => array('CSS', 'JavaScript', 'PHP', 'HTML')
+            ),
+            array(
+                'name' => "Simone",
+                'last' => "Di Maulo",
+                'skills' => array('PHP', 'Ruby', 'CSS', 'MySQL')
+            ),
+            array(
+                'name' => "Gianluca",
+                'last' => "Bargelli",
+                'skills' => array('Ruby', 'JavaScript', 'PHP', 'HTML', 'CSS')
+            ),
+            array(
+                'name' => "Giulio",
+                'last' => "De Donato",
+                'skills' => array('CSS', 'JavaScript', 'PHP', 'HTML')
+            ),
+            array(
+                'name' => "Erin",
+                'last' => "Hima",
+                'skills' => array('PHP', 'MySQL')
+            ),
+        );
+
+        $result = Core::chain($devs)
+            ->select(function($el) { return strtolower(substr($el['name'], 0, 1)) == "g"; })
+            ->reject(function($el) { return in_array("Ruby", $el['skills']); })
+            ->pluck('name')
+            ->value();
+
+        $this->assertEquals(array("Gianpiero", "Giulio"), $result);
+    }
+
 }
