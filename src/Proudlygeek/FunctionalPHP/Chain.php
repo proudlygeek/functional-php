@@ -5,7 +5,8 @@ namespace Proudlygeek\FunctionalPHP;
 /**
  *
  */
-class Chain {
+class Chain
+{
 
     /**
      * @var
@@ -20,26 +21,27 @@ class Chain {
      * @param $obj
      * @param null $library
      */
-    public function __construct($obj, $library=null) {
-		$this->obj = $obj;
+    public function __construct($obj, $library = null)
+    {
+        $this->obj = $obj;
         $this->library = $library;
-	}
+    }
 
     /**
      * @return mixed
      */
     public function getObj()
-	{
-		return $this->obj;
-	}
+    {
+        return $this->obj;
+    }
 
     /**
      * @param $obj
      */
     public function setObj($obj)
-	{
-		$this->obj = $obj;
-	}
+    {
+        $this->obj = $obj;
+    }
 
     /**
      * @param $library
@@ -61,16 +63,17 @@ class Chain {
      * @return mixed
      */
     public function value()
-	{
-		return $this->getObj();
-	}
+    {
+        return $this->getObj();
+    }
 
     /**
      * @param $method
      * @param $args
      * @return Chain
      */
-    public function __call($method, $args) {
+    public function __call($method, $args)
+    {
         array_unshift($args, $this->obj);
         $result = call_user_func_array($this->library . "::" . $method, $args);
 
@@ -79,6 +82,6 @@ class Chain {
         }
 
         return $this;
-	}
+    }
 
 }
