@@ -7,7 +7,8 @@ use Proudlygeek\FunctionalPHP\Chain;
 /**
  *
  */
-class Core {
+class Core
+{
 
     /**
      * @static
@@ -15,11 +16,11 @@ class Core {
      * @param $block
      */
     public static function each(array $iterable, $block)
-	{
-		foreach($iterable as $el) {
-			$block($el);
-		}
-	}
+    {
+        foreach ($iterable as $el) {
+            $block($el);
+        }
+    }
 
     /**
      * @static
@@ -28,16 +29,16 @@ class Core {
      * @return array
      */
     public static function map(array $iterable, $block)
-	{
-		
-		$result = array();
+    {
 
-		foreach($iterable as $el) {
-			$result[]= $block($el);
-		}
+        $result = array();
 
-		return $result;
-	}
+        foreach ($iterable as $el) {
+            $result[] = $block($el);
+        }
+
+        return $result;
+    }
 
     /**
      * @static
@@ -46,15 +47,15 @@ class Core {
      * @return null
      */
     public static function find(array $iterable, $block)
-	{
-		foreach ($iterable as $el) {
-			if ($block($el)) {
-				return $el;
-			}
-		}
+    {
+        foreach ($iterable as $el) {
+            if ($block($el)) {
+                return $el;
+            }
+        }
 
-		return null;
-	}
+        return null;
+    }
 
     /**
      * @static
@@ -63,18 +64,18 @@ class Core {
      * @return array
      */
     public static function select(array $iterable, $block)
-	{
-		
-		$result = array();
+    {
 
-		foreach($iterable as $el) {
-			if ($block($el)) {
-				$result[] = $el;
-			}
-		}
+        $result = array();
 
-		return $result;
-	}
+        foreach ($iterable as $el) {
+            if ($block($el)) {
+                $result[] = $el;
+            }
+        }
+
+        return $result;
+    }
 
     /**
      * @static
@@ -83,17 +84,17 @@ class Core {
      * @return array
      */
     public static function reject(array $iterable, $block)
-	{
-		$result = array();
+    {
+        $result = array();
 
-		foreach($iterable as $el) {
-			if (!$block($el)) {
-				$result[] = $el;
-			}
-		}
+        foreach ($iterable as $el) {
+            if (!$block($el)) {
+                $result[] = $el;
+            }
+        }
 
-		return $result;
-	}
+        return $result;
+    }
 
     /**
      * @static
@@ -102,16 +103,16 @@ class Core {
      * @return mixed
      */
     public static function reduce(array $iterable, $block)
-	{
-		
-		$partialResult = $iterable[0];
+    {
 
-		for ($i = 1; $i < count($iterable); $i++) {
-			$partialResult = $block($partialResult, $iterable[$i]);
-		}
+        $partialResult = $iterable[0];
 
-		return $partialResult;
-	}
+        for ($i = 1; $i < count($iterable); $i++) {
+            $partialResult = $block($partialResult, $iterable[$i]);
+        }
+
+        return $partialResult;
+    }
 
     /**
      * @static
@@ -120,15 +121,15 @@ class Core {
      * @return bool
      */
     public static function any(array $iterable, $block)
-	{
-		foreach($iterable as $el) {
-			if ($block($el)) {
-				return true;
-			}
-		}
+    {
+        foreach ($iterable as $el) {
+            if ($block($el)) {
+                return true;
+            }
+        }
 
-		return false;
-	}
+        return false;
+    }
 
     /**
      * @static
@@ -137,15 +138,15 @@ class Core {
      * @return bool
      */
     public static function all(array $iterable, $block)
-	{
-		foreach($iterable as $el) {
-			if (!$block($el)) {
-				return false;
-			}
-		}
+    {
+        foreach ($iterable as $el) {
+            if (!$block($el)) {
+                return false;
+            }
+        }
 
-		return true;
-	}
+        return true;
+    }
 
     /**
      * @static
@@ -154,15 +155,15 @@ class Core {
      * @return array
      */
     public static function pluck(array $iterable, $field)
-	{
-		$result = array();
+    {
+        $result = array();
 
-		foreach($iterable as $el) {
-			$result[]= $el[$field];
-		}
+        foreach ($iterable as $el) {
+            $result[] = $el[$field];
+        }
 
-		return $result;
-	}
+        return $result;
+    }
 
     /**
      * @static
@@ -171,19 +172,19 @@ class Core {
      * @return bool
      */
     public static function max(array $iterable, $block)
-	{
-		$max = $block($iterable[0]);
+    {
+        $max = $block($iterable[0]);
 
-		next($iterable);
+        next($iterable);
 
-		foreach($iterable as $el) {
-			if($current = $block($el) > $max) {
-				$max = $current;
-			}
-		}
+        foreach ($iterable as $el) {
+            if ($current = $block($el) > $max) {
+                $max = $current;
+            }
+        }
 
-		return $max;
-	}
+        return $max;
+    }
 
     /**
      * @static
@@ -192,19 +193,19 @@ class Core {
      * @return bool
      */
     public static function min(array $iterable, $block)
-	{
-		$min = $block($iterable[0]);
+    {
+        $min = $block($iterable[0]);
 
-		next($iterable);
+        next($iterable);
 
-		foreach($iterable as $el) {
-			if($current = $block($el) < $min) {
-				$min = $current;
-			}
-		}
+        foreach ($iterable as $el) {
+            if ($current = $block($el) < $min) {
+                $min = $current;
+            }
+        }
 
-		return $min;
-	}
+        return $min;
+    }
 
     /**
      * @static
@@ -212,11 +213,11 @@ class Core {
      * @return Chain
      */
     public static function chain(array $obj)
-	{
-		$chain = new Chain($obj);
+    {
+        $chain = new Chain($obj);
         $chain->setLibrary('Proudlygeek\FunctionalPHP\Core');
 
         return $chain;
-	}
-	
+    }
+
 }
