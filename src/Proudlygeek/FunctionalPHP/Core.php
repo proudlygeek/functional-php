@@ -2,6 +2,7 @@
 
 namespace Proudlygeek\FunctionalPHP;
 
+use Proudlygeek\FunctionalPHP\Chain;
 
 class Core {
 	
@@ -120,7 +121,7 @@ class Core {
 		}
 
 		return $max;
-	}
+	} 
 
 	public static function min(array $iterable, $block)
 	{
@@ -135,6 +136,14 @@ class Core {
 		}
 
 		return $min;
+	}
+
+	public static function chain(array $obj)
+	{
+		$chain = new Chain($obj);
+        $chain->setLibrary('Proudlygeek\FunctionalPHP\Core');
+
+        return $chain;
 	}
 	
 }

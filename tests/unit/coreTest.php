@@ -131,4 +131,13 @@ class CoreTest extends \PHPUnit_Framework_TestCase {
 
 		$this->assertEquals(24, $result);
 	}
+
+	public function test_simpleChain()
+	{
+		$result = Core::chain(array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10))
+			->select(function($n) { return $n > 5; })
+			->value();
+
+		$this->assertEquals(array(6, 7, 8, 9, 10), $result);
+	}
 }
