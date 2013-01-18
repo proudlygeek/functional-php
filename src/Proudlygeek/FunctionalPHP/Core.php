@@ -47,7 +47,6 @@ abstract class Core
             $result[] = $block($el);
         }
 
-        //
         return $result;
     }
 
